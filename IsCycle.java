@@ -9,16 +9,14 @@ package lab12;
  *
  * @author Fadejimi
  */
-public class IsTree {
+public class IsCycle {
     private Graph graph;
     
-    public IsTree(Graph graph) {
+    public IsCycle(Graph graph) {
         this.graph = graph;
     }
     
-    public boolean isTree() {
-        IsCycle cycle = new IsCycle(graph);
-        if (cycle.isCycle()) return false;
+    public boolean isCycle() {
         return true;
     }
 }

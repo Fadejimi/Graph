@@ -24,6 +24,7 @@ public class IsConnected {
         DepthFirstSearch dfs = new DepthFirstSearch(graph);
         List<Vertex> vertexes = graph.vertices();
         
+        dfs.handleInitialVertex();
         dfs.singleComponentLoop();
         boolean flag = true;
         vertexMap = dfs.visitedVertices;

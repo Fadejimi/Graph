@@ -17,8 +17,8 @@ public class IsTree {
     }
     
     public boolean isTree() {
-        IsCycle cycle = new IsCycle(graph);
-        if (cycle.isCycle()) return false;
+        ContainsCycle cycle = new ContainsCycle(graph);
+        if (cycle.containsCycle()) return false;
         return true;
     }
 }

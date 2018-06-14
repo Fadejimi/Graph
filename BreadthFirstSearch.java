@@ -6,6 +6,7 @@
 package lab12;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -94,7 +95,22 @@ public class BreadthFirstSearch extends AbstractGraphSearch {
     }
     
     public Set<Vertex> getUnvisitedAdjencyList(Vertex v) {
+        Set<Vertex> vertexes = new HashSet<>();
+        List<Vertex> adjVerts = this.adjancyList.get(v);
+        Iterator<Vertex> it = adjVerts.iterator();
         
+        while (it.hasNext()) {
+            Vertex new_v = it.next();
+            if (!getHasBeenVisited(new_v)) {
+                it.remove();
+            }
+            else {
+                vertexes.add(new_v);
+                it.remove();
+            }
+        }
+        
+        return vertexes;
     }
     
     public void processVertex(Vertex v) {

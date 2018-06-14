@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 import java.util.Stack;
 
 /**
@@ -57,14 +58,23 @@ public class BreadthFirstSearch extends AbstractGraphSearch {
     protected void handleInitialVertex(Vertex start) {
         if (start != null) {
             setHasBeenVisited(start);
-            processVertix(start);
+            processVertex(start);
             queue.add(start);
         }
     }
 
     @Override
     protected void singleComponentLoop() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        while (!queue.isEmpty()) {
+            Vertex v = queue.remove();
+            Set<Vertex> v_list = getUnvisitedAdjencyList(v);
+            for (Vertex new_v : v_list) {
+                setHasBeenVisited(new_v);
+		processEdge(new Edge(queue.peek(),new_v));
+		processVertex(new_v);
+                queue.add(new_v);
+            }
+        }
     }
 
     @Override
@@ -83,13 +93,19 @@ public class BreadthFirstSearch extends AbstractGraphSearch {
         return null;
     }
     
-    protected void processVertix(Vertex v) {
+    public Set<Vertex> getUnvisitedAdjencyList(Vertex v) {
         
     }
     
-    protected void setHasBeenVisited(Vertex v) {
+    public void processVertex(Vertex v) {
+        
+    }
+    
+    public void setHasBeenVisited(Vertex v) {
         this.visitedVertices.put(v, v);
     }
     
-    
+    public void processEdge(Edge e) {
+        
+    }
 }
